@@ -38,3 +38,21 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'jasmine-rails'
+end
+
+gem 'react-rails', :git => 'https://github.com/reactjs/react-rails.git'
+gem 'nokogiri'
+gem 'bootstrap-sass'
+
+gem 'mime-types'
+gem 'netrc'
+gem 'rdoc'
+gem 'rest-client'
+
+
