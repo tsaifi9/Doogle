@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe HomeController, :type => :controller do
 
@@ -9,9 +9,9 @@ RSpec.describe HomeController, :type => :controller do
     end
   end
 
-  describe "GET create" do
+  describe "POST create" do
     it "returns http success" do
-      get :create
+      post :create
       expect(response).to be_success
     end
   end

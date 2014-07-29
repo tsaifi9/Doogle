@@ -1,14 +1,17 @@
+require 'rest_client'
+
 class Word < ActiveRecord::Base
-  has_many :definitions
+  has_many :definitions, dependent: :destroy
+
+  validates_presence_of :value
+  validates :value, format: { without: /\s/ } #no spaces allowed
+
+  def self.get_definitions(word)
+    word = Word.find_by(value: word)
+    return word.definitions.map{ |definition| definition.text } unless word.nil?
 
 
-  # Gets the defintiion of a word. If the word exists, it will be taken from the database
-  # If the word does not exist in the db, a call is made to the merriam-webster api to get it
-  # word is then saved if call is made to api
-  # If the words does not exist in either place, returns "Not found"
-  # Params:
-  # +word+:: word to search for
-  def self.get_definition(word)
 
+    ["Definition not found"]
   end
 end

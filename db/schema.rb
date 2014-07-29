@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728183417) do
+ActiveRecord::Schema.define(version: 20140728230636) do
 
   create_table "definitions", force: true do |t|
     t.string   "text"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140728183417) do
   add_index "definitions", ["word_id"], name: "index_definitions_on_word_id"
 
   create_table "words", force: true do |t|
-    t.text     "word"
+    t.text     "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

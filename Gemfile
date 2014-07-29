@@ -41,9 +41,15 @@ gem 'spring',        group: :development
 
 
 group :test, :development do
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'jasmine-rails'
+  gem 'selenium-webdriver'
+  gem 'webmock'
+  gem 'shoulda-matchers'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
 gem 'react-rails', :git => 'https://github.com/reactjs/react-rails.git'

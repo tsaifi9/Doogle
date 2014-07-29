@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Word.create(word: "seed")
+Word.create(value: "seed")
 Definition.create(text: "created froms seeds.rb", word_id: 1)
 Definition.create(text: "Another one created froms seeds.rb", word_id: 1)

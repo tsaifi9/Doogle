@@ -1,5 +1,7 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Definition, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Definition do
+  describe "associations" do
+    it { should belong_to(:word) }
+  end
 end
