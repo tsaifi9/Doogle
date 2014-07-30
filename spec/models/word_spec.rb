@@ -6,8 +6,16 @@ describe Word do
   end
 
   context "validations" do
+    let(:unallowed_words) {["word1", "word!", "word+" "word,", "!@#$^%*&^()+1234567890~`\""]}
+    let(:allowed_words) { ["word", "ice skate", "ice-skate", "I'm"] }
+
     it { should validate_presence_of :value }
-    it { should_not allow_value("word with spaces").for(:value) }
+
+    it "should validate characters" do
+      allowed_words.each { |word| should allow_value(word).for(:value) }
+      unallowed_words.each { |word| should_not allow_value(word).for(:value) }
+    end
+
   end
 
   context "get_definition" do

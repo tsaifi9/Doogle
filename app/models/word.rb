@@ -3,8 +3,7 @@ require 'rest_client'
 class Word < ActiveRecord::Base
   has_many :definitions, dependent: :destroy
 
-  validates_presence_of :value
-  validates :value, format: { without: /\s/ } #no spaces allowed
+  validates :value, presence: true, format: { without: /[^a-zA-z\-'\s]/ }
 
   def self.get_definitions(word)
     word = Word.find_by(value: word)
