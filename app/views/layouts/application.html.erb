@@ -5,10 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    $.ajaxSetup({
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token',
+          $('meta[name="csrf-token"]').attr('content'));
+      }
+    });
+  </script>
+
 </head>
 <body>
 
-<%= yield %>
+<div class="row">
+  <div class="col-md-2 col-md-offset-5">
+    <%= yield %>
+  </div>
+</div>
+
 
 </body>
 </html>

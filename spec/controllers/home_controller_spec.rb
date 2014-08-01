@@ -10,8 +10,8 @@ RSpec.describe HomeController, :type => :controller do
   end
 
   describe "POST create" do
-    it "returns http success" do
-      post :create
+    it "returns correct http codes" do
+      post :create, {word: {value: "test"}}
       expect(response).to be_success
     end
   end

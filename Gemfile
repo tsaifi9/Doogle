@@ -46,15 +46,20 @@ group :test, :development do
   gem 'capybara'
   gem 'jasmine-rails'
   gem 'selenium-webdriver'
-  gem 'webmock'
+
   gem 'shoulda-matchers'
   gem 'factory_girl'
   gem 'factory_girl_rails'
 end
 
+group :test do
+  gem 'webmock'
+end
+
 gem 'react-rails', :git => 'https://github.com/reactjs/react-rails.git'
 gem 'nokogiri'
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 gem 'mime-types'
 gem 'netrc'

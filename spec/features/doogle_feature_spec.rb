@@ -9,6 +9,7 @@ feature "Doogle", js: true do
       fill_in "word", with: "Test"
       click_button "Doogle Search"
 
+      expect(page).to have_content("stubbed definition")
     end
   end
 end

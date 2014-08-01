@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :home, only: [:index, :create]
+  resources :home, only: [:index, :create]
   root "home#index"
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
