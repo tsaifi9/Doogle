@@ -9,7 +9,7 @@ describe Word do
     let(:unallowed_words) {["word1", "word!", "word+" "word,", "!@#$^%*&^()+1234567890~`\""]}
     let(:allowed_words) { ["word", "ice skate", "ice-skate", "I'm"] }
 
-    it { should validate_presence_of :value } }
+    it { should validate_presence_of :value }
 
     it "should validate characters" do
       allowed_words.each { |word| should allow_value(word).for(:value) }
@@ -37,10 +37,12 @@ describe Word do
       expect(definitions).to eq(word_with_multiple_definitions.definitions.map { |x| x.text })
 
       #call to external (stubbed api)
+      word.value = "stubbed"
+      expect(word.get_definitions).to eq(["stubbed definition"])
 
       #no definition
-      word.value = "does_not_exist"
-      expect(word.get_definitions).to eq(["stubbed definition"])
+      word.value = "dne"
+      expect(word.get_definitions).to eq(["Definition not found"])
     end
   end
 end

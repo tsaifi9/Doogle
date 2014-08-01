@@ -49,7 +49,15 @@ RSpec.configure do |config|
   config.before(:each) do
     #for merriam webster
     stub_request(:get, /dictionaryapi.com/)
-      .to_return(status: 200, body: "<dt>stubbed definition</dt>", headers: {})
+    .to_return(status: 200, body: "<dt>stubbed definition</dt>", headers: {})
+
+    stub_request(:get, /dictionaryapi.com\/api\/v1\/references\/collegiate\/xml\/dne/)
+      .to_return(status: 200, body: "", headers: {})
+
+    stub_request(:get, /dictionaryapi.com\/api\/v1\/references\/collegiate\/xml\/error/)
+      .to_return(status: 400, body: "<dt>this will never be checked</dt>", headers: {})
+
+
   end
 
 end
