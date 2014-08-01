@@ -6,17 +6,17 @@ FactoryGirl.define do
   end
 
   factory :word do
-    value "word"
+    word "word"
 
     factory :word_with_single_definition do
-      value "single_definition"
+      word "single_definition"
       after(:create) do |word, _|
         create_list(:definition, 1, word: word)
       end
     end
 
     factory :word_with_multiple_definitions do
-      value "multiple_definitions"
+      word "multiple_definitions"
       after(:create) do |word, _|
         create_list(:definition, 2, word: word)
       end

@@ -9,11 +9,11 @@ describe Word do
     let(:unallowed_words) {["word1", "word!", "word+" "word,", "!@#$^%*&^()+1234567890~`\""]}
     let(:allowed_words) { ["word", "ice skate", "ice-skate", "I'm"] }
 
-    it { should validate_presence_of :value }
+    it { should validate_presence_of :word }
 
     it "should validate characters" do
-      allowed_words.each { |word| should allow_value(word).for(:value) }
-      unallowed_words.each { |word| should_not allow_value(word).for(:value) }
+      allowed_words.each { |word| should allow_value(word).for(:word) }
+      unallowed_words.each { |word| should_not allow_value(word).for(:word) }
     end
 
   end
@@ -23,7 +23,7 @@ describe Word do
     let!(:word_with_multiple_definitions) { create(:word_with_multiple_definitions) }
 
     it "returns the definitions" do
-      word = Word.new(value: "single_definition")
+      word = Word.new(word: "single_definition")
 
       #single definition (call to db)
       definition = word.get_definitions
@@ -31,17 +31,17 @@ describe Word do
       expect(definition).to eq(word_with_single_definition.definitions.map { |x| x.text })
 
       #multiple definitions (call to db)
-      word.value = "multiple_definitions"
+      word.word = "multiple_definitions"
       definitions = word.get_definitions
       expect(definitions.length).to eq(2)
       expect(definitions).to eq(word_with_multiple_definitions.definitions.map { |x| x.text })
 
       #call to external (stubbed api)
-      word.value = "stubbed"
+      word.word = "stubbed"
       expect(word.get_definitions).to eq(["stubbed definition"])
 
       #no definition
-      word.value = "dne"
+      word.word = "dne"
       expect(word.get_definitions).to eq(["Definition not found"])
     end
   end

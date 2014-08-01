@@ -13,20 +13,20 @@ RSpec.describe HomeController, :type => :controller do
     it "returns correct http codes" do
 
       #invalid callbacks
-      post :create, {word: {value: "invalid!"}}
+      post :create, {word: {word: "invalid!"}}
       expect(response).to_not be_success
 
-      post :create, {word: {value: ""}}
+      post :create, {word: {word: ""}}
       expect(response).to_not be_success
 
       #valid callbacks
-      post :create, {word: {value: "test"}}
+      post :create, {word: {word: "test"}}
       expect(response).to be_success
 
-      post :create, {word: {value: "I'm"}}
+      post :create, {word: {word: "I'm"}}
       expect(response).to be_success
 
-      post :create, {word: {value: "ice-skate"}}
+      post :create, {word: {word: "ice-skate"}}
       expect(response).to be_success
 
     end

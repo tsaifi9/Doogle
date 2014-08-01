@@ -12,20 +12,20 @@ var DoogleForm = React.createClass({
   handleSubmit: function (event) {
     event.preventDefault();
 
-    this.refs.value.getDOMNode().value = this.refs.value.getDOMNode().value.trim().toLowerCase();
+    this.refs.word.getDOMNode().value = this.refs.word.getDOMNode().value.trim().toLowerCase();
 
-    if (!this.refs.value.getDOMNode().value)
+    if (!this.refs.word.getDOMNode().value)
       return false;
 
     var formData = $( this.refs.form.getDOMNode() ).serialize();
     this.props.onButtonSubmit(formData, this.props.url);
-    this.refs.value.getDOMNode().value = "";
+    this.refs.word.getDOMNode().value = "";
   },
 
   render: function() {
     return (
       <form ref="form" action={this.props.url} accept-charset="UTF-8" method="post" onSubmit={ this.handleSubmit }>
-        <p><input id="value" type="text" autofocus="autofocus" ref="value" onKeyPress={ this.handleKeyPress } name="word[value]"/></p>
+        <p><input id="word" type="text" autofocus="autofocus" ref="word" onKeyPress={ this.handleKeyPress } name="word[word]"/></p>
         <p><button type="submit">Doogle Search</button></p>
         <ValidationErrorList refs={this.refs} errors={this.props.errors} />
       </form>

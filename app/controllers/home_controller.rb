@@ -15,6 +15,6 @@ class HomeController < ApplicationController
 
   private
     def word_params
-      params.require(:word).permit(:value)
+      params.require(:word).permit(:word)
     end
 end
